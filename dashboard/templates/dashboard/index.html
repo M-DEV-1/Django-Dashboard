@@ -1,0 +1,34 @@
+{% extends 'dashboard/base.html' %}
+<!-- serves as home page for website -->
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    
+</head>
+
+<!-- <nav> <h1> Hello World </h1></nav>
+    <h1>hello world</h1> 
+
+        this would have disappeared. to make this appear within index.html since base.html is extending and "overriding" we need to use the block tag used in base.html-->
+{% block content %}
+<body>
+    <br>
+    <div class="text-center">
+
+        <h2>Student Dashboard</h2>
+        <br>
+        <h5>for all student management needs</h5>
+
+        <hr> 
+        <!-- hr is horizontal line -->
+        <a href="{% url 'register' %}" type = "button" class="btn btn-primary">Create User</a>
+
+        
+    </div> 
+</body>
+{% endblock %}
+</html>

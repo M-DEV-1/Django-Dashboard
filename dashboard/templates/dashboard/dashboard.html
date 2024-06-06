@@ -1,0 +1,39 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+
+    <h1>Welcome to the dashboard, {{user}}.</h1>
+    <hr>
+
+    <a href="{%url 'dashboard'}" class="btn btn-outline-rounded-primary btn-sm"> Create New record</a>
+    
+    <hr>
+
+    <table class="table table-light table-hover">
+
+        <thead class="table-dark">
+
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Parent Number</th>
+                <th scope="col">Address</th>
+
+            </tr>
+
+        </thead>
+
+    </table>
+
+    {% for record in records%}
+    
+        {{record.id}}
+        {{record.firstname}}
+        {{record.lastname}}
+
+    {% endfor %}
+
+
+
+{%endblock%}
