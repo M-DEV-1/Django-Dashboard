@@ -5,7 +5,7 @@
 <h1>Welcome to the dashboard, {{user}}.</h1>
 <hr>
 
-<a href="{%url 'create-record'}" class="btn btn-outline-primary btn-sm"> Create Record</a>
+<a href="{% url 'create-record' %}" class="btn btn-outline-primary btn-sm"> Create Record</a>
 
 <hr>
 
@@ -36,6 +36,8 @@
             <td> {{record.parentnumber}}</td>
             <td> {{record.address}} </td>
             <td> {{record.date_creation}} </td>
+
+            <td><a href="{% url 'record' record.id%}">view</a></td>
         </tr>
         {%endfor%}
         {% endif %}

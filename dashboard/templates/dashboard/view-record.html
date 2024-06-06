@@ -1,1 +1,25 @@
- 
+ {% extends 'dashboard/base.html' %}
+
+ {% block content %}
+
+    <strong class="fw-bold text-primary display-6"> {{record.firstname|upper}}&nbsp;{{record.lastname|upper}}
+    </strong>
+    
+    <div class="card">
+        <div class="card-body">
+            <p> <strong> ID: {{record.id}}</strong></p> 
+            <p> <strong> Guardian's Phone Number:</strong> {{record.parentnumber}}</p> 
+            <p> <strong> Address: </strong>{{record.address}}</p> 
+            <p> <strong> Date of creation: </strong> {{record.date_creation}}</p> 
+        </div>
+    </div>
+    <br>
+
+    <a href="{%url 'dashboard'%}" class="btn btn-outline-info btn-sm">Go back to Dashboard</a>
+    
+    <a href="{%url 'update-record' record.id %}" class="btn btn-success btn-sm">Update Record</a>
+
+    <a href="{%url 'delete-record' record.id %}" class="btn btn-danger btn-sm">Delete Record</a>
+    
+
+    {%endblock%}

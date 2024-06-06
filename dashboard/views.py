@@ -11,6 +11,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from .models import studentrecord
 
+from django.contrib import messages
+
 # - HomePage
 def home(request):
     
@@ -30,6 +32,7 @@ def register(request):
         if form.is_valid():
             
             form.save()
+            messages.success(request, "Account Created Successfully")
             return redirect('login')
     
     context = {'form':form}
@@ -82,15 +85,45 @@ def create_record(request):
          if form.is_valid():
              
              form.save()
-             
-             return redirect("dashboard")
+             messages.success(request, "Record Created")
+             return redirect('dashboard')
     
     context = {'form':form}
     return render(request, 'dashboard/create-record.html', context=context)
     
+# - Update Record
+
+@login_required(login_url='login')
+def update_record(request, pk):
+    record = studentrecord.objects.get(id=pk)
     
+    form = UpdateRecord(request.POST, instance=record)
+    if form.is_valid():
+        form.save()  
+        messages.success(request, "Update Sucessful")
+        return redirect('dashboard')
+    
+    context = {'form':form}
+    return render(request, 'dashboard/update-record.html', context=context)
 
+# - View a particular record
+@login_required(login_url='login')
+def view_record(request,pk):
+    
+    all_records = studentrecord.objects.get(id=pk)
+    
+    context={'record':all_records}
+    return render(request, 'dashboard/view-record.html', context=context)
+    
+# - Delete Record
 
+@login_required(login_url='login')
+def delete_record(request,pk):
+    record = studentrecord.objects.get(id=pk)
+    
+    record.delete()
+    
+    return redirect('dashboard')
 
 # - Logout User
 

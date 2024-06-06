@@ -29,6 +29,19 @@
         <!-- Notification messages -->
         {% block content %}
 
+        <div class="container">
+
+            <br>
+
+            {% for message in messages %}
+
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <p class="alert alert-success float-center text-center">
+                    {{message}}
+                </p>
+                {%endif%}
+            {%endfor%}
+        </div>
 
         {% endblock %}
 
