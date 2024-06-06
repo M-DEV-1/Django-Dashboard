@@ -2,38 +2,45 @@
 
 {% block content %}
 
-    <h1>Welcome to the dashboard, {{user}}.</h1>
-    <hr>
+<h1>Welcome to the dashboard, {{user}}.</h1>
+<hr>
 
-    <a href="{%url 'dashboard'}" class="btn btn-outline-rounded-primary btn-sm"> Create New record</a>
-    
-    <hr>
+<a href="{%url 'create-record'}" class="btn btn-outline-primary btn-sm"> Create Record</a>
 
-    <table class="table table-light table-hover">
+<hr>
 
-        <thead class="table-dark">
+<table class="table table-hover">
 
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Parent Number</th>
-                <th scope="col">Address</th>
+    <thead class="table-dark">
 
-            </tr>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Full Name</th>
+            <th scope="col">Guardian's Number</th>
+            <th scope="col">Address</th>
+            <th scope="col">Date Created</th>
 
-        </thead>
+            <th scope="col">View</th>
+        </tr>
 
-    </table>
+    </thead>
 
-    {% for record in records%}
-    
-        {{record.id}}
-        {{record.firstname}}
-        {{record.lastname}}
+    <tbody>
 
-    {% endfor %}
+        {% if records %}
 
+        {% for record in records %}
+        <tr>
+            <td> {{record.id}} </td>
+            <td> {{record.firstname}} {{record.lastname}}</td>
+            <td> {{record.parentnumber}}</td>
+            <td> {{record.address}} </td>
+            <td> {{record.date_creation}} </td>
+        </tr>
+        {%endfor%}
+        {% endif %}
+    </tbody>
 
+</table>
 
 {%endblock%}

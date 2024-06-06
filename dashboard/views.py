@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 # Create your views here.
-from .forms import RegisterUser, LoginUser
+from .forms import RegisterUser, LoginUser, CreateRecord, UpdateRecord
 
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate
@@ -69,16 +69,32 @@ def dashboard(request):
     
     return render(request, 'dashboard/dashboard.html', context=context)
     
-
-
-
+# - Create a record
+@login_required(login_url='login')
+def create_record(request):
+    
+    form = CreateRecord()
+    
+    if request.method == "POST":
+         
+         form = CreateRecord(request.POST)
+         
+         if form.is_valid():
+             
+             form.save()
+             
+             return redirect("dashboard")
+    
+    context = {'form':form}
+    return render(request, 'dashboard/create-record.html', context=context)
+    
+    
 
 
 
 # - Logout User
 
 def logout(request):
-    
     auth.logout(request)
     return redirect("login")
     
