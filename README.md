@@ -1,3 +1,4 @@
+
 # Django Dashboard Project
 
 ## Overview
@@ -10,3 +11,7 @@ This project helped me in becoming better at Django, with CRUD and APIs.
 - JavaScript
 - Bootstrap
 - SQLite (Django in-built database)
+
+
+### Note: I have deleted the in-built SQLite3 database.
+use ```python manage.py makemigrations``` ```python manage.py migrate``` to make all necessary migrations into a new database
