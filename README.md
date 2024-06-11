@@ -14,4 +14,6 @@ This project helped me in becoming better at Django, with CRUD and APIs.
 
 
 ### Note: I have deleted the in-built SQLite3 database.
-use ```python manage.py makemigrations``` ```python manage.py migrate``` to make all necessary migrations into a new database
+```python manage.py makemigrations``` 
+```python manage.py migrate``` 
+use this to make all necessary migrations into a new database
