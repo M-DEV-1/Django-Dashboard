@@ -13,7 +13,8 @@ This project helped me in becoming better at Django, with CRUD and APIs.
 - SQLite (Django in-built database)
 
 
-### Note: I have deleted the in-built SQLite3 database.
-```python manage.py makemigrations``` 
-```python manage.py migrate``` 
+## Note:
+ I have deleted the in-built SQLite3 database<br><br>
+```python manage.py makemigrations``` <br>
+```python manage.py migrate``` <br><br>
 use this to make all necessary migrations into a new database
